@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🚗 Smart Parking Management System
 
 A Smart Parking Management System developed using Python, Flask, SQLite, HTML, CSS, Bootstrap, and JavaScript.
@@ -65,3 +66,7 @@ http://127.0.0.1:5000
 ```
 
 
+=======
+# Smart-Parking-System
+A web-based Smart Parking Management System using Python Flask and SQLite.
+>>>>>>> 67ead54384eef9f905ec6c7dc8c8c951b8312da7
