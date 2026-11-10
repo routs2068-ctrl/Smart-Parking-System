@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Booking History</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-4">
+    <h2>Booking History for {{ session.user }}</h2>
+
+    <a href="{{ url_for('home') }}" class="btn btn-secondary mb-3">Back</a>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Slot ID</th>
+                <th>Vehicle</th>
+                <th>Status</th>
+                <th>Timestamp</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for record in records %}
+            <tr>
+                <td>{{ record.slot_id }}</td>
+                <td>{{ record.vehicle }}</td>
+                <td>{{ record.status }}</td>
+                <td>{{ record.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="4" class="text-center">No Booking History Found</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

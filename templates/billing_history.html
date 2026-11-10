@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Billing History</title>
+</head>
+<body>
+    <h2>My Billing History</h2>
+
+    <table border="1" cellpadding="10">
+        <tr>
+            <th>Bill ID</th>
+            <th>Booking ID</th>
+            <th>Estimated Amount</th>
+            <th>Advance</th>
+            <th>Final Amount</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+
+        {% for bill in bills %}
+        <tr>
+            <td>{{ bill.id }}</td>
+            <td>{{ bill.booking_id }}</td>
+            <td>₹{{ "%.2f"|format(bill.estimated_amount) }}</td>
+            <td>₹{{ "%.2f"|format(bill.advance_paid) }}</td>
+
+            <td>
+                {% if bill.status == "Completed" %}
+                    ₹{{ "%.2f"|format(bill.final_amount) }}
+                {% else %}
+                    Pending
+                {% endif %}
+            </td>
+
+            <td>{{ bill.payment_status }}</td>
+
+            <td>
+                <a href="{{ url_for('view_bill', bill_id=bill.id) }}">
+                    View Bill
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <br>
+    <a href="{{ url_for('home') }}">Back to Dashboard</a>
+</body>
+</html>

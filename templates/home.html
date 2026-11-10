@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart Parking</title>
+</head>
+<body>
+
+<h1>Welcome {{ session['user'] }}</h1>
+<a href="/logout">Logout</a>
+<a href="/history">History</a>
+
+<h2>Parking Slots</h2>
+
+<table border="1" cellpadding="10">
+    <tr>
+        <th>Slot</th>
+        <th>Status</th>
+        <th>Action</th>
+    </tr>
+
+    {% for slot in slots %}
+    <tr>
+        <td>{{ slot.id }}</td>
+        <td>{{ slot.status }}</td>
+
+        <td>
+            {% if slot.status == "available" %}
+                <a href="/book/{{ slot.id }}">Book</a>
+            {% else %}
+                <a href="/unbook/{{ slot.id }}">Unbook</a>
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>
